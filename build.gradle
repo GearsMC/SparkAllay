@@ -52,10 +52,11 @@ subprojects {
     }
 
     repositories {
+        // Allay API once yerel Maven'dan gelir (Allay icinde ./gradlew :api:publishToMavenLocal);
+        // boylece uzak bir snapshot yerel Allay kaynak koduna gore derlemeyi golgelemez.
+        mavenLocal()
         mavenCentral()
         maven { url "https://repo.lucko.me/" }
         maven { url "https://jitpack.io" }
-        // Allay API yerel checkout'tan: Allay icinde ./gradlew :api:publishToMavenLocal
-        mavenLocal()
     }
 }
