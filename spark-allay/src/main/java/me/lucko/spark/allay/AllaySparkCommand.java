@@ -33,7 +33,7 @@ public class AllaySparkCommand extends Command {
     private final SparkPlatform platform;
 
     public AllaySparkCommand(SparkPlatform platform) {
-        super("spark", "Spark main command", "spark.command");
+        super("spark", "Spark gelişmiş komutları (kısayol: /performans)", "spark.command");
         this.platform = platform;
     }
 

@@ -50,6 +50,7 @@ public class AllaySparkPlugin extends Plugin implements SparkPlugin {
         this.platform.enable();
 
         Registries.COMMANDS.register(new AllaySparkCommand(this.platform));
+        Registries.COMMANDS.register(new AllayPerformanceCommand(this.platform));
     }
 
     @Override
@@ -113,7 +114,8 @@ public class AllaySparkPlugin extends Plugin implements SparkPlugin {
 
         var slf4jLogger = pluginLogger.atLevel(slf4jLevel);
         if (throwable != null) {
-            slf4jLogger.log(msg, throwable);
+            // Fluent API'de istisna argüman olarak verilirse yığın izi yutuluyordu.
+            slf4jLogger.setCause(throwable).log(msg);
         } else {
             slf4jLogger.log(msg);
         }

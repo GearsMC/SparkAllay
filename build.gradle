@@ -1,7 +1,3 @@
-plugins {
-    id 'org.cadixdev.licenser' version '0.6.1' apply false
-}
-
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.api.tasks.testing.logging.TestLogEvent
 
@@ -14,10 +10,9 @@ subprojects {
     apply plugin: 'java'
     apply plugin: 'idea'
     apply plugin: 'java-library'
-    apply plugin: 'org.cadixdev.licenser'
 
     ext {
-        baseVersion = '1.10.142'
+        baseVersion = '1.10.186'
         pluginVersion = baseVersion + '-SNAPSHOT'
         pluginDescription = 'spark is a performance profiling plugin/mod for Minecraft clients, servers and proxies.'
 
@@ -56,15 +51,11 @@ subprojects {
         duplicatesStrategy = DuplicatesStrategy.INCLUDE
     }
 
-    license {
-        header = rootProject.file('HEADER.txt')
-        include '**/*.java'
-    }
-
     repositories {
         mavenCentral()
         maven { url "https://repo.lucko.me/" }
         maven { url "https://jitpack.io" }
-        // mavenLocal()
+        // Allay API yerel checkout'tan: Allay icinde ./gradlew :api:publishToMavenLocal
+        mavenLocal()
     }
 }

@@ -29,7 +29,7 @@ import java.util.Map;
 /**
  * @author IWareQ
  */
-public class AllayClassSourceLookup extends ClassSourceLookup.ByFirstUrlSource {
+public class AllayClassSourceLookup extends ClassSourceLookup.ByClassLoader {
     private final Map<ClassLoader, String> classLoaders2PluginName = new HashMap<>();
 
     public AllayClassSourceLookup(PluginManager manager) {

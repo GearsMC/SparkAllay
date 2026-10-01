@@ -66,7 +66,7 @@ public class AllayWorldInfoProvider implements WorldInfoProvider {
                 var chunks = dimension.getChunkManager().getLoadedChunks();
                 var chunkInfos = chunks.stream().map(chunk -> new AllayChunkInfo(chunk, entityManager)).toList();
 
-                result.put(world.getWorldData().getDisplayName() + "_" + dimension.getDimensionInfo(), chunkInfos);
+                result.put(world.getWorldData().getDisplayName() + "_" + dimension.getDimensionType().getIdentifier().path(), chunkInfos);
             }
         }
 
@@ -79,6 +79,8 @@ public class AllayWorldInfoProvider implements WorldInfoProvider {
         for (var world : Server.getInstance().getWorldPool().getWorlds().values()) {
             for (var gameRuleEntry : world.getWorldData().getGameRules().getGameRules().entrySet()) {
                 var value = gameRuleEntry.getValue();
+                // Spark her kural icin varsayilan degeri zorunlu tutuyor; yoksa rapor NPE ile dusuyordu.
+                data.putDefault(gameRuleEntry.getKey().getName(), Objects.toString(gameRuleEntry.getKey().getDefaultValue()));
                 data.put(gameRuleEntry.getKey().getName(), world.getWorldData().getDisplayName(), Objects.toString(value));
             }
         }

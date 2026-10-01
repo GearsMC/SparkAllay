@@ -1,15 +1,21 @@
 plugins {
-    id 'com.gradleup.shadow' version '8.3.0'
-    id 'org.allaymc.gradle.plugin' version '0.1.2'
+    id 'com.gradleup.shadow' version '9.2.2'
+    id 'org.allaymc.gradle.plugin' version '0.2.1'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(25)
+    }
 }
 
 tasks.withType(JavaCompile).configureEach {
-    // override, compile targeting J21
-    options.release = 21
+    // Allay ve GearsCore ile ayni: Java 25
+    options.release = 25
 }
 
 allay {
-    api = "0.17.0"
+    api = "0.29.0-SNAPSHOT"
 
     plugin {
         it.entrance = "me.lucko.spark.allay.AllaySparkPlugin"
