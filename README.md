@@ -25,7 +25,7 @@ Bu fork yalnizca `spark-allay` modulunu derler ve GearsMC'nin Allay'ine (API `0.
 | Komut | Ne yapar |
 | --- | --- |
 | `/performans durum` | TPS, CPU ve bellek ozeti |
-| `/performans profil [saniye]` | Tum thread'leri profiller (varsayilan 120 sn, 30-1800), sonunda rapor linki verir |
+| `/performans profil [saniye]` | Tum thread'leri profiller (varsayilan 120 sn, 30-1800; uyuyan thread'ler haric), sonunda rapor linki verir |
 | `/performans durdur` | Profili erken bitirir ve linki verir |
 | `/performans iptal` | Profili rapor olusturmadan iptal eder |
 | `/performans bellek` | Bellek ozeti (link) |

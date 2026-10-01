@@ -81,7 +81,8 @@ public class AllayPerformanceCommand extends Command {
                 }
                 sender.sendMessage("§aProfil başladı: §f" + seconds + " sn§a sürecek. Bitince rapor linki gelecek."
                         + " Erken bitirmek için §f/performans durdur§a.");
-                run(spark, "profiler", "start", "--timeout", String.valueOf(seconds));
+                // Uyuyan/bekleyen thread'ler sayilmaz; rapor yalnizca gercekten CPU harcayan kodu gosterir.
+                run(spark, "profiler", "start", "--timeout", String.valueOf(seconds), "--ignore-sleeping");
             }
             case "durdur" -> {
                 sender.sendMessage("§eProfil durduruluyor, rapor hazırlanıyor...");
@@ -148,7 +149,7 @@ public class AllayPerformanceCommand extends Command {
                 "§6--- Performans (spark) ---",
                 "§e/performans durum §7- TPS, CPU ve bellek özeti",
                 "§e/performans profil [saniye] §7- Tüm thread'leri profiller (varsayılan "
-                        + DEFAULT_PROFILE_SECONDS + " sn), sonunda rapor linki verir",
+                        + DEFAULT_PROFILE_SECONDS + " sn, uyuyan thread'ler hariç), sonunda rapor linki verir",
                 "§e/performans durdur §7- Profili erken bitirir ve linki verir",
                 "§e/performans iptal §7- Profili rapor oluşturmadan iptal eder",
                 "§e/performans bellek §7- Hangi sınıfın ne kadar bellek tuttuğu (link)",
